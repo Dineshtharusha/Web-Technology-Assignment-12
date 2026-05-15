@@ -1,0 +1,203 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    overflow: hidden;
+    font-family: 'Ubuntu', sans-serif;
+    background: url('assets/bg.jpeg') no-repeat center bottom;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+}
+
+.score-container {
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.score-box {
+    background: white;
+    padding: 10px 20px;
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+}
+
+#game-area {
+    width: 400px;
+    height: 100vh;
+    background-color: black;
+    position: relative;
+    overflow: hidden;
+}
+
+.road-border {
+    position: absolute;
+    width: 12px;
+    height: 100%;
+    background: repeating-linear-gradient(to bottom, #ddd 0, #ddd 40px, transparent 40px, transparent 80px);
+    background-size: 100% 80px;
+    z-index: 1;
+}
+
+.road-border.left {
+    left: 0;
+}
+
+.road-border.right {
+    right: 0;
+}
+
+.road-line-center {
+    position: absolute;
+    width: 12px;
+    height: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: repeating-linear-gradient(to bottom, #ddd 0, #ddd 40px, transparent 40px, transparent 80px);
+    background-size: 100% 80px;
+    z-index: 1;
+}
+
+.moving-road .road-border, .moving-road .road-line-center {
+    animation: animateRoad 1.5s linear infinite;
+}
+
+@keyframes animateRoad {
+    from { background-position: 0 0; }
+    to { background-position: 0 80px; }
+}
+
+.car {
+    position: absolute;
+    width: 50px;
+    height: 100px;
+    background-size: 100% 100%;
+    background-position: center;
+    z-index: 5;
+    background-repeat: no-repeat;
+}
+
+.player-car {
+    width: 1000px;
+    height: 50px;
+    background-image: url('assets/player.png');
+}
+
+.enemy-car {
+    width: 1000px;
+    height: 50px;
+    background-image: url('assets/enemy.png');
+}
+
+.info-container {
+    width: 30%;
+    color: white;
+    padding: 40px;
+}
+
+.info-container h1 {
+    font-size: 42px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.info-container h1 u {
+    text-decoration-thickness: 3px;
+    text-underline-offset: 8px;
+}
+
+.info-container h2 {
+    font-size: 22px;
+    margin-bottom: 20px;
+    font-weight: normal;
+}
+
+.info-container p {
+    font-size: 14px;
+}
+
+.screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#start-screen {}
+
+#game-over-screen {
+    background: rgba(0, 0, 0, 0.85);
+}
+
+.hidden {
+    display: none !important;
+}
+
+#play-btn, #restart-btn {
+    background: #ff7f00;
+    color: white;
+    font-size: 32px;
+    font-weight: bold;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-family: 'Ubuntu', sans-serif;
+    box-shadow: 0 4px 0 #cc6600;
+    transition: transform 0.1s, box-shadow 0.1s;
+}
+
+#play-btn:active, #restart-btn:active {
+    transform: translateY(4px);
+    box-shadow: none;
+}
+
+#play-btn {
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.game-over-title {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 55px;
+    text-align: center;
+    margin-bottom: 40px;
+    line-height: 1.1;
+    text-shadow: 2px 2px 0px #000;
+}
+
+.game-over-title .red { color: #f44336; }
+.game-over-title .blue { color: #2196f3; }
+.game-over-title .yellow { color: #ffeb3b; }
+
+.stats {
+    text-align: center;
+    font-size: 20px;
+    color: white;
+    margin-bottom: 40px;
+}
+
+.stats p {
+    margin: 15px 0;
+}
+
+.red-text { color: #f44336; }
+.blue-text { color: #2196f3; }
